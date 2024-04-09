@@ -57,8 +57,8 @@ select count (*) from items
 ```sql
 -- result here
 SELECT c.country_name, COUNT(DISTINCT o.customer_id) AS CustomerCountDistinct
-FROM Countries c
-JOIN Customers o ON c.country_code = o.country_code
+FROM Сustomer c
+JOIN Сustomer o ON c.country_code = o.country_code
 WHERE c.country_name IN ('France', 'Italy')
 GROUP BY c.country_name;
 ```
@@ -78,7 +78,7 @@ GROUP BY c.country_name;
 ```sql
 -- result here
 SELECT c.customer_name, SUM(i.item_price * o.quantity) AS revenue
-FROM Customers c
+FROM Сustomer c
 JOIN Orders o ON c.customer_id = o.customer_id
 JOIN Items i ON o.item_id = i.item_id
 GROUP BY c.customer_name
