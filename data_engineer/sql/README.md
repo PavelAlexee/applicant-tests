@@ -56,10 +56,11 @@ select count (*) from items
 
 ```sql
 -- result here
-SELECT Country_name, COUNT(customer_id) AS CustomerCountDistinct
-FROM Countries
-WHERE Country_name IN ('Italy', 'France')
-GROUP BY Country_name
+SELECT c.country_name, COUNT(DISTINCT o.customer_id) AS CustomerCountDistinct
+FROM Countries c
+JOIN Customers o ON c.country_code = o.country_code
+WHERE c.country_name IN ('France', 'Italy')
+GROUP BY c.country_name;
 ```
 
 ### 2) ТОП 10 покупателей по расходам
