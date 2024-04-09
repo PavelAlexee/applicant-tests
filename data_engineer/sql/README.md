@@ -114,6 +114,16 @@ LIMIT 10;
 
 ```sql
 -- result here
+SELECT o.customer_id, c.customer_name, i.item_name AS MostExpensiveItemName
+FROM Orders o
+JOIN Items i ON o.item_id = i.item_id
+JOIN (
+    SELECT customer_id, MAX(item_price) AS max_price
+    FROM Orders o
+    JOIN Items i ON o.item_id = i.item_id
+    GROUP BY customer_id
+) max_prices ON o.customer_id = max_prices.customer_id AND i.item_price = max_prices.max_price
+JOIN Customer c ON o.customer_id = c.customer_id;
 ```
 
 ### 5) Ежемесячный доход
