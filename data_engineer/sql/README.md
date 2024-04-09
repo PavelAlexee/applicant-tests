@@ -56,7 +56,7 @@ select count (*) from items
 
 ```sql
 -- result here
-SELECT Country_name, COUNT(Country_name) AS CustomerCountDistinct
+SELECT Country_name, COUNT(customer_id) AS CustomerCountDistinct
 FROM Countries
 WHERE Country_name IN ('Italy', 'France')
 GROUP BY Country_name
